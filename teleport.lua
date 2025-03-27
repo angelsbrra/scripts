@@ -20,7 +20,7 @@ local function tweenPlayerToSpawn(player, spawnLocation)
             local goalCFrame = spawnLocation.CFrame
             local tweenInfo = TweenInfo.new(
                 0.5,  -- Time to complete the tween (very fast)
-                Enum.EasingStyle.Sine,  -- Use Linear easing for constant speed
+                Enum.EasingStyle.Exponential,  -- Use Linear easing for constant speed
                 Enum.EasingDirection.Out, -- This doesn't matter for linear, but good practice
                 0,  -- Repeat count (0 means no repeat)
                 false,  -- Reverses the tween after completion
