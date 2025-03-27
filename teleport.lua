@@ -19,7 +19,7 @@ local function tweenPlayerToSpawn(player, spawnLocation)
             -- Calculate the distance and direction for tweening
             local goalCFrame = spawnLocation.CFrame
             local tweenInfo = TweenInfo.new(
-                0.3,  -- Time to complete the tween (very fast)
+                0.5,  -- Time to complete the tween (very fast)
                 Enum.EasingStyle.Linear,  -- Use Linear easing for constant speed
                 Enum.EasingDirection.Out, -- This doesn't matter for linear, but good practice
                 0,  -- Repeat count (0 means no repeat)
@@ -55,7 +55,7 @@ local function handleTeleportAndUpdate()
             if targetRootPart and angelRootPart then
                 -- Smoothly transition the HumanoidRootPart to match the targetRootPart
                 local goalCFrame = targetRootPart.CFrame
-                local tweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0) -- Faster speed
+                local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0) -- Faster speed
                 local tweenGoal = { CFrame = goalCFrame }
                 local tween = TweenService:Create(angelRootPart, tweenInfo, tweenGoal)
                 tween:Play()
@@ -82,7 +82,7 @@ local function handleTeleportAndUpdate()
             if targetRootPart and angelRootPart then
                 -- Smoothly transition the HumanoidRootPart to match the targetRootPart
                 local goalCFrame = targetRootPart.CFrame
-                local tweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0) -- Faster speed
+                local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0) -- Faster speed
                 local tweenGoal = { CFrame = goalCFrame }
                 local tween = TweenService:Create(angelRootPart, tweenInfo, tweenGoal)
                 tween:Play()
@@ -99,7 +99,7 @@ local function handleTeleportAndUpdate()
         end
         
         -- Wait a short time before checking again (you can adjust the wait time as needed)
-        wait(0.3)
+        wait(0.5)
     end
 end
 
