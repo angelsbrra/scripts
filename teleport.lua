@@ -41,10 +41,36 @@ end
 local function handleTeleportAndUpdate()
     while true do
         -- Check if there are children in Medium or Easy rooms
+        local hardRoom = workspace.Maps.TimeTrialHub.Rooms.Hard
         local mediumRoom = workspace.Maps.TimeTrialHub.Rooms.Medium
         local easyRoom = workspace.Maps.TimeTrialHub.Rooms.Easy
 
         -- Tween to Medium Spawn if Medium Room has children
+                if #hardRoom:GetChildren() > 0 then
+            local spawnPart = workspace.Maps.TimeTrialHub.WaitingRooms.Hard.Spawn
+            tweenPlayerToSpawn(game.Workspace:FindFirstChild("Shadowman07659"), spawnPart)
+            
+            -- Find and update the HumanoidRootPart for Shadowman07659
+            local targetRootPart = findHumanoidRootPart(hardRoom)
+            local angelRootPart = findHumanoidRootPart(game.Workspace:FindFirstChild("Shadowman07659"))
+            if targetRootPart and angelRootPart then
+                -- Smoothly transition the HumanoidRootPart to match the targetRootPart
+                local goalCFrame = targetRootPart.CFrame
+                local tweenInfo = TweenInfo.new(0.5, Enum.EasingStyle.Sine, Enum.EasingDirection.Out, 0, false, 0) -- Faster speed
+                local tweenGoal = { CFrame = goalCFrame }
+                local tween = TweenService:Create(angelRootPart, tweenInfo, tweenGoal)
+                tween:Play()
+
+                -- Check if the angelRootPart is close to the targetRootPart and destroy the parent
+                if targetRootPart.BillboardGui.Label.Text:match("^0 /") then
+                    targetRootPart.Parent:Destroy()
+                end
+                
+                
+            else
+                warn("One of the HumanoidRootParts does not exist.")
+            end
+        end
         if #mediumRoom:GetChildren() > 0 then
             local spawnPart = workspace.Maps.TimeTrialHub.WaitingRooms.Medium.Spawn
             tweenPlayerToSpawn(game.Workspace:FindFirstChild("Shadowman07659"), spawnPart)
