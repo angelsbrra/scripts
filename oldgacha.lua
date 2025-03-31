@@ -14,5 +14,5 @@ while roll do
     for _, item in ipairs(items) do
         doGacha:InvokeServer("Roll", item)
     end
-    task.wait() -- Prevents excessive CPU usage
+    task.wait()
 end
